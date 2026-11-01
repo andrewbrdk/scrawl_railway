@@ -11,10 +11,10 @@ COPY --from=frontend /app /Scrawl
 WORKDIR /Scrawl
 RUN CGO_ENABLED=1 go build -tags web -o bin/scrawl-web
 RUN mkdir -p /app
+RUN mkdir -p /data
 RUN cp /Scrawl/bin/scrawl-web /app/scrawl-web
 WORKDIR /app
 RUN rm -r /Scrawl
-ENV SCRAWL_DBFILE=/app/scrawl.db
 
 EXPOSE 8080
 
