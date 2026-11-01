@@ -5,7 +5,7 @@ RUN git clone https://github.com/andrewbrdk/Scrawl /app
 RUN npm ci --prefix frontend
 RUN npm run dist:web --prefix frontend
 
-FROM golang:1.25-alpine as backend
+FROM golang:1.26-alpine as backend
 COPY --from=frontend /app /Scrawl
 WORKDIR /Scrawl
 RUN go build -tags web -o bin/scrawl-web
